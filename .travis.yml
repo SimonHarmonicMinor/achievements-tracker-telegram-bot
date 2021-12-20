@@ -25,6 +25,7 @@ deploy:
   access_key_id: "$AWS_ACCESS_KEY_ID"
   secret_access_key: "$AWS_SECRET_KEY"
   region: "us-east-2"
+  zip_file: 'build/libs/achievements-tracker-telegram-bot-0.0.1-SNAPSHOT.jar'
   app: "achievements-tracker-telegram-bot"
   env: "Achievementstrackertelegrambot-env"
   bucket: "$AWS_BUCKET_NAME"
