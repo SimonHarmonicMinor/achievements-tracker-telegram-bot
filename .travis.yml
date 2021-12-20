@@ -27,6 +27,7 @@ deploy:
   region: "us-east-2"
   app: "achievements-tracker-telegram-bot"
   env: "Achievementstrackertelegrambot-env"
+  bucket: "$AWS_BUCKET_NAME"
   on:
     branch: master
 
