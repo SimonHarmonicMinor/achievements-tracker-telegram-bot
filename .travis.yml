@@ -1,0 +1,38 @@
+language: java
+
+jdk:
+  - openjdk11
+
+install: true
+
+git:
+  depth: false
+
+addons:
+  sonarcloud:
+    organization: simonharmonicminor
+
+script:
+  - "./gradlew clean build jacocoTestReport sonarqube"
+
+branches:
+  only:
+    - master
+
+deploy:
+  skip_cleanup: true
+  provider: elasticbeanstalk
+  access_key_id: "$AWS_ACCESS_KEY_ID"
+  secret_access_key: "$AWS_SECRET_KEY"
+  region: "us-east-2"
+  app: "achievements-tracker-telegram-bot"
+  env: "Achievementstrackertelegrambot-env"
+  on:
+    branch: master
+
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+    - "$HOME/.sonar/cache"
+    - "$HOME/.gradle"
+    - ".gradle"
