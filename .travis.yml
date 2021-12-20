@@ -11,8 +11,6 @@ git:
 addons:
   sonarcloud:
     organization: simonharmonicminor
-    token:
-      secure: "$SONAR_TOKEN"
 
 script:
   - "./gradlew clean build jacocoTestReport sonarqube"
