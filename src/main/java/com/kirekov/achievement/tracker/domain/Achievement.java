@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -39,8 +40,8 @@ public class Achievement {
   @NotNull(message = "Achievement description cannot be null")
   private String description = "";
 
-  @Column(name = "user_id_who_created", updatable = false)
   @ManyToOne(fetch = LAZY)
+  @JoinColumn(name = "user_id_who_created", updatable = false)
   @NotNull(message = "User who created achievement cannot be null")
   private User userWhoCreated;
 
