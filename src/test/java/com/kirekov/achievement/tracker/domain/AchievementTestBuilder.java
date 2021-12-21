@@ -2,6 +2,7 @@ package com.kirekov.achievement.tracker.domain;
 
 import com.kirekov.achievement.tracker.test_util.TestBuilder;
 import java.time.OffsetDateTime;
+import java.util.function.Consumer;
 
 public class AchievementTestBuilder implements TestBuilder<Achievement> {
 
@@ -25,26 +26,24 @@ public class AchievementTestBuilder implements TestBuilder<Achievement> {
   }
 
   public AchievementTestBuilder withName(String name) {
-    final var copy = new AchievementTestBuilder(this);
-    copy.name = name;
-    return copy;
+    return copyWith(b -> b.name = name);
   }
 
   public AchievementTestBuilder withDescription(String description) {
-    final var copy = new AchievementTestBuilder(this);
-    copy.description = description;
-    return copy;
+    return copyWith(b -> b.description = description);
   }
 
   public AchievementTestBuilder withUserWhoCreated(TestBuilder<? extends User> userWhoCreated) {
-    final var copy = new AchievementTestBuilder(this);
-    copy.userWhoCreated = userWhoCreated;
-    return copy;
+    return copyWith(b -> b.userWhoCreated = userWhoCreated);
   }
 
   public AchievementTestBuilder withDateCreated(OffsetDateTime dateCreated) {
+    return copyWith(b -> b.dateCreated = dateCreated);
+  }
+
+  private AchievementTestBuilder copyWith(Consumer<AchievementTestBuilder> consumer) {
     final var copy = new AchievementTestBuilder(this);
-    copy.dateCreated = dateCreated;
+    consumer.accept(copy);
     return copy;
   }
 
