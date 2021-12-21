@@ -17,10 +17,10 @@ import javax.validation.constraints.NotNull;
 public class Achievement {
 
   public static Achievement newAchievement(String name, String description) {
-    return newAchievement(name, description, null);
+    return newAchievementWithUser(name, description, null);
   }
 
-  public static Achievement newAchievement(String name, String description, User userWhoCreated) {
+  public static Achievement newAchievementWithUser(String name, String description, User userWhoCreated) {
     final var achievement = new Achievement();
     achievement.setName(name);
     achievement.setDescription(description);
