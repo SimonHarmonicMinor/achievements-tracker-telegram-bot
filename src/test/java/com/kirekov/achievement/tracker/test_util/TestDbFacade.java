@@ -42,6 +42,15 @@ public class TestDbFacade {
     return () -> save(builder);
   }
 
+  public void saveAll(TestBuilder<?>... builders) {
+    transactionTemplate.execute(status -> {
+      for (TestBuilder<?> builder : builders) {
+        save(builder);
+      }
+      return null;
+    });
+  }
+
   public <T> T save(TestBuilder<T> builder) {
     return transactionTemplate.execute(
         status -> testEntityManager.persistAndFlush(builder.build())
@@ -50,6 +59,7 @@ public class TestDbFacade {
 
   @TestConfiguration
   public static class Config {
+
     @Bean
     public TestDbFacade testDbFacade() {
       return new TestDbFacade();
