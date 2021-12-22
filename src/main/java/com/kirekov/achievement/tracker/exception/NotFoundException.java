@@ -1,13 +1,12 @@
 package com.kirekov.achievement.tracker.exception;
 
-import static java.lang.String.format;
-
 /**
  * Base exception for not found entities.
  */
 public class NotFoundException extends RuntimeException {
 
   public NotFoundException() {
+    super();
   }
 
   public NotFoundException(String message) {

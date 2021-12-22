@@ -6,6 +6,9 @@ import com.kirekov.achievement.tracker.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Use case to create new {@linkplain Achievement}.
+ */
 @Service
 public class AchievementCreateService {
 

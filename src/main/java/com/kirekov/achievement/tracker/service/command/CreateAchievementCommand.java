@@ -21,6 +21,7 @@ public class CreateAchievementCommand extends SelfValidating {
       String achievementName,
       String achievementDescription
   ) {
+    super();
     this.userId = userId;
     this.achievementName = achievementName;
     this.achievementDescription = achievementDescription;
