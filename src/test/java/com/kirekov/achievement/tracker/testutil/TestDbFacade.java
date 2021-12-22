@@ -57,6 +57,12 @@ public class TestDbFacade {
     );
   }
 
+  public <T> T find(Class<T> entityClass, Object id) {
+    return transactionTemplate.execute(
+        status -> testEntityManager.find(entityClass, id)
+    );
+  }
+
   @TestConfiguration
   public static class Config {
 
