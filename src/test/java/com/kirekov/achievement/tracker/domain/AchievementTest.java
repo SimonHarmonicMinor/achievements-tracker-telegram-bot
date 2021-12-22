@@ -4,9 +4,9 @@ import static com.kirekov.achievement.tracker.domain.UserTestBuilder.aUser;
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import com.kirekov.achievement.tracker.test_util.AbstractIntegrationTest;
-import com.kirekov.achievement.tracker.test_util.DBTest;
-import com.kirekov.achievement.tracker.test_util.TestDbFacade;
+import com.kirekov.achievement.tracker.testutil.DBTest;
+import com.kirekov.achievement.tracker.testutil.IntegrationTest;
+import com.kirekov.achievement.tracker.testutil.TestDbFacade;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -19,7 +19,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @DBTest
-class AchievementTest extends AbstractIntegrationTest {
+class AchievementTest extends IntegrationTest {
 
   @Autowired
   private TestDbFacade db;
@@ -58,9 +58,9 @@ class AchievementTest extends AbstractIntegrationTest {
     return new TypeSafeMatcher<>() {
       @Override
       protected boolean matchesSafely(Achievement item) {
-        return item.getUserWhoCreated().getId().equals(userId) &&
-            item.getName().equals(name) &&
-            item.getDescription().equals(desc);
+        return item.getUserWhoCreated().getId().equals(userId)
+            && item.getName().equals(name)
+            && item.getDescription().equals(desc);
       }
 
       @Override

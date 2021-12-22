@@ -1,4 +1,4 @@
-package com.kirekov.achievement.tracker.test_util;
+package com.kirekov.achievement.tracker.testutil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;

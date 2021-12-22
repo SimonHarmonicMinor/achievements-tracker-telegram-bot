@@ -1,4 +1,4 @@
-package com.kirekov.achievement.tracker.test_util;
+package com.kirekov.achievement.tracker.testutil;
 
 public interface TestBuilder<T> {
 

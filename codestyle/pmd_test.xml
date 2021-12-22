@@ -35,7 +35,6 @@
   <rule ref="category/java/codestyle.xml/FieldNamingConventions"/>
   <rule ref="category/java/codestyle.xml/ForLoopShouldBeWhileLoop"/>
   <rule ref="category/java/codestyle.xml/IdenticalCatchBranches"/>
-  <rule ref="category/java/codestyle.xml/LinguisticNaming"/>
 
   <rule name="AbstractClassWithoutAbstractMethod"
     language="java"

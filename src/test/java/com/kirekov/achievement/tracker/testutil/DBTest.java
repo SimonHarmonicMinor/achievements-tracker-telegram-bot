@@ -1,4 +1,4 @@
-package com.kirekov.achievement.tracker.test_util;
+package com.kirekov.achievement.tracker.testutil;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;

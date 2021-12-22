@@ -4,9 +4,9 @@ import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
-import com.kirekov.achievement.tracker.test_util.AbstractIntegrationTest;
-import com.kirekov.achievement.tracker.test_util.DBTest;
-import com.kirekov.achievement.tracker.test_util.TestDbFacade;
+import com.kirekov.achievement.tracker.testutil.DBTest;
+import com.kirekov.achievement.tracker.testutil.IntegrationTest;
+import com.kirekov.achievement.tracker.testutil.TestDbFacade;
 import java.util.Collection;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -21,7 +21,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @DBTest
-class UserTest extends AbstractIntegrationTest {
+class UserTest extends IntegrationTest {
 
   @Autowired
   private TestDbFacade db;
