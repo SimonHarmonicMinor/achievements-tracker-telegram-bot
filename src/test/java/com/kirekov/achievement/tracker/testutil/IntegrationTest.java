@@ -1,4 +1,4 @@
-package com.kirekov.achievement.tracker.test_util;
+package com.kirekov.achievement.tracker.testutil;
 
 import java.util.Map;
 import java.util.stream.Stream;
@@ -11,9 +11,9 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.lifecycle.Startables;
 
 @ContextConfiguration(
-    initializers = AbstractIntegrationTest.Initializer.class
+    initializers = IntegrationTest.Initializer.class
 )
-public abstract class AbstractIntegrationTest {
+public class IntegrationTest {
 
   private static final String IMAGE_VERSION = "mysql:8.0";
 

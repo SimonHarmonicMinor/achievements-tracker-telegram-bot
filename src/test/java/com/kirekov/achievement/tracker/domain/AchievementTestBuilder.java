@@ -1,9 +1,12 @@
 package com.kirekov.achievement.tracker.domain;
 
-import com.kirekov.achievement.tracker.test_util.TestBuilder;
+import com.kirekov.achievement.tracker.testutil.TestBuilder;
 import java.time.OffsetDateTime;
 import java.util.function.Consumer;
 
+/**
+ * Test builder for {@linkplain Achievement}.
+ */
 public class AchievementTestBuilder implements TestBuilder<Achievement> {
 
   private String name = "";

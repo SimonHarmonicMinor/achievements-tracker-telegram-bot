@@ -20,6 +20,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.NaturalId;
 
+/**
+ * User.
+ */
 @Entity
 @Table(name = "user")
 public class User {
@@ -58,10 +61,26 @@ public class User {
   protected User() {
   }
 
+  /**
+   * Creates new real user.
+   *
+   * @param uniqueIdentifier user's unique identifier
+   * @param firstName        first name
+   * @return new real user
+   */
   public static User newRealUser(long uniqueIdentifier, String firstName) {
     return newRealUser(uniqueIdentifier, firstName, "", "");
   }
 
+  /**
+   * Creates new real user.
+   *
+   * @param uniqueIdentifier user's unique identifier
+   * @param firstName        first name
+   * @param lastName         last name
+   * @param username         username
+   * @return new real user
+   */
   public static User newRealUser(
       long uniqueIdentifier,
       String firstName,
@@ -77,6 +96,13 @@ public class User {
     return user;
   }
 
+  /**
+   * Creates new bot user.
+   *
+   * @param uniqueIdentifier user's unique identifier
+   * @param firstName        first name
+   * @return new bot user
+   */
   public static User newBot(long uniqueIdentifier, String firstName) {
     final var user = new User();
     user.setBot(true);
@@ -85,6 +111,11 @@ public class User {
     return user;
   }
 
+  /**
+   * Adds new {@linkplain Achievement} to the current user.
+   *
+   * @param achievement achievement to add
+   */
   public void addAchievement(Achievement achievement) {
     achievement.setUserWhoCreated(this);
     achievements.add(achievement);

@@ -14,6 +14,9 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Accomplished achievement.
+ */
 @Entity
 @Table(name = "achievement")
 public class Achievement {
@@ -42,10 +45,25 @@ public class Achievement {
   protected Achievement() {
   }
 
+  /**
+   * Creates new {@linkplain Achievement} without {@linkplain User}.
+   *
+   * @param name        achievement name
+   * @param description achievement description
+   * @return new achievement
+   */
   public static Achievement newAchievement(String name, String description) {
     return newAchievementWithUser(name, description, null);
   }
 
+  /**
+   * Creates new {@linkplain Achievement} with {@linkplain User}.
+   *
+   * @param name           achievement name
+   * @param description    achievement description
+   * @param userWhoCreated user who created achievement
+   * @return new achievement
+   */
   public static Achievement newAchievementWithUser(
       String name,
       String description,
