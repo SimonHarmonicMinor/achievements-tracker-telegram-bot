@@ -17,42 +17,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "user")
 public class User {
-
-  public static User newRealUser(long uniqueIdentifier, String firstName) {
-    return newRealUser(uniqueIdentifier, firstName, "", "");
-  }
-
-  public static User newRealUser(
-      long uniqueIdentifier,
-      String firstName,
-      String lastName,
-      String username
-  ) {
-    final var user = new User();
-    user.setUniqueIdentifier(uniqueIdentifier);
-    user.setFirstName(firstName);
-    user.setLastName(lastName);
-    user.setUsername(username);
-    user.setBot(false);
-    return user;
-  }
-
-  public static User newBot(long uniqueIdentifier, String firstName) {
-    final var user = new User();
-    user.setBot(true);
-    user.setUniqueIdentifier(uniqueIdentifier);
-    user.setFirstName(firstName);
-    return user;
-  }
-
-  protected User() {
-  }
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
@@ -83,7 +54,37 @@ public class User {
   private String username = "";
 
   @OneToMany(fetch = LAZY, mappedBy = "userWhoCreated", cascade = {PERSIST, MERGE})
-  private List<Achievement> achievements = new ArrayList<>();
+  private List<@Valid Achievement> achievements = new ArrayList<>();
+
+  public static User newRealUser(long uniqueIdentifier, String firstName) {
+    return newRealUser(uniqueIdentifier, firstName, "", "");
+  }
+
+  protected User() {
+  }
+
+  public static User newRealUser(
+      long uniqueIdentifier,
+      String firstName,
+      String lastName,
+      String username
+  ) {
+    final var user = new User();
+    user.setUniqueIdentifier(uniqueIdentifier);
+    user.setFirstName(firstName);
+    user.setLastName(lastName);
+    user.setUsername(username);
+    user.setBot(false);
+    return user;
+  }
+
+  public static User newBot(long uniqueIdentifier, String firstName) {
+    final var user = new User();
+    user.setBot(true);
+    user.setUniqueIdentifier(uniqueIdentifier);
+    user.setFirstName(firstName);
+    return user;
+  }
 
   public void addAchievement(Achievement achievement) {
     achievement.setUserWhoCreated(this);

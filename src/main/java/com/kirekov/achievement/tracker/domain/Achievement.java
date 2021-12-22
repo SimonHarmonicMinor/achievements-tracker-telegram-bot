@@ -11,23 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "achievement")
 public class Achievement {
-
-  public static Achievement newAchievement(String name, String description) {
-    return newAchievementWithUser(name, description, null);
-  }
-
-  public static Achievement newAchievementWithUser(String name, String description, User userWhoCreated) {
-    final var achievement = new Achievement();
-    achievement.setName(name);
-    achievement.setDescription(description);
-    achievement.setUserWhoCreated(userWhoCreated);
-    return achievement;
-  }
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
@@ -43,6 +32,7 @@ public class Achievement {
   @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "user_id_who_created", updatable = false)
   @NotNull(message = "User who created achievement cannot be null")
+  @Valid
   private User userWhoCreated;
 
   @Column(name = "date_created", updatable = false)
@@ -50,6 +40,22 @@ public class Achievement {
   private OffsetDateTime dateCreated = OffsetDateTime.now();
 
   protected Achievement() {
+  }
+
+  public static Achievement newAchievement(String name, String description) {
+    return newAchievementWithUser(name, description, null);
+  }
+
+  public static Achievement newAchievementWithUser(
+      String name,
+      String description,
+      User userWhoCreated
+  ) {
+    final var achievement = new Achievement();
+    achievement.setName(name);
+    achievement.setDescription(description);
+    achievement.setUserWhoCreated(userWhoCreated);
+    return achievement;
   }
 
   public Long getId() {
