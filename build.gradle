@@ -4,11 +4,38 @@ plugins {
 	id 'java'
 	id 'jacoco'
 	id "org.sonarqube" version "3.3"
+	id 'checkstyle'
+	id 'pmd'
 }
 
 group = 'com.kirekov'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+pmd {
+	consoleOutput = true
+	toolVersion = "6.31.0"
+	ignoreFailures = false
+	ruleSets = []
+}
+
+pmdMain {
+	ruleSetFiles = files("codestyle/pmd_main.xml")
+}
+
+pmdTest {
+	ruleSetFiles = files("codestyle/pmd_test.xml")
+}
+
+task runStaticAnalysis(dependsOn: [checkstyleMain, checkstyleTest, pmdMain, pmdTest])
+
+checkstyle {
+	configFile = file('codestyle/checkstyle.xml')
+	ignoreFailures = false
+	maxWarnings = 0
+	showViolations = true
+	toolVersion = '8.42'
+}
 
 repositories {
 	mavenCentral()
