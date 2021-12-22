@@ -18,10 +18,13 @@ public class TestDbFacade {
   private TransactionTemplate transactionTemplate;
 
   public void cleanDatabase() {
-    JdbcTestUtils.deleteFromTables(
-        jdbcTemplate,
-        "achievement", "user"
-    );
+    transactionTemplate.execute(status -> {
+      JdbcTestUtils.deleteFromTables(
+          jdbcTemplate,
+          "achievement", "user"
+      );
+      return null;
+    });
   }
 
   public <T> TestBuilder<T> persistedOnce(TestBuilder<T> builder) {
@@ -54,6 +57,12 @@ public class TestDbFacade {
   public <T> T save(TestBuilder<T> builder) {
     return transactionTemplate.execute(
         status -> testEntityManager.persistAndFlush(builder.build())
+    );
+  }
+
+  public <T> T find(Class<T> entityClass, Object id) {
+    return transactionTemplate.execute(
+        status -> testEntityManager.find(entityClass, id)
     );
   }
 
