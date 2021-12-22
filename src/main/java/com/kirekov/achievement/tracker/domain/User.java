@@ -2,6 +2,7 @@ package com.kirekov.achievement.tracker.domain;
 
 
 import static java.util.Objects.requireNonNullElse;
+import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -81,7 +82,7 @@ public class User {
   @Column(name = "username", updatable = false)
   private String username = "";
 
-  @OneToMany(fetch = LAZY, mappedBy = "userWhoCreated", cascade = PERSIST)
+  @OneToMany(fetch = LAZY, mappedBy = "userWhoCreated", cascade = {PERSIST, MERGE})
   private List<Achievement> achievements = new ArrayList<>();
 
   public void addAchievement(Achievement achievement) {
