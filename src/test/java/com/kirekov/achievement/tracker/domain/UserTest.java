@@ -113,9 +113,13 @@ class UserTest extends AbstractIntegrationTest {
   private static Matcher<User> ofRealUser(long uniqueIdentifier, String someName) {
     return new TypeSafeMatcher<>() {
       @Override
-      protected boolean matchesSafely(User item) {
-        return !item.isBot() && item.getUniqueIdentifier() == uniqueIdentifier
-            && item.getFirstName().equals(someName);
+      protected boolean matchesSafely(User user) {
+        return !user.isBot()
+            && user.getUniqueIdentifier() == uniqueIdentifier
+            && user.getFirstName().equals(someName)
+            && user.getDateRegistered() != null
+            && user.getLastName() != null
+            && user.getUsername() != null;
       }
 
       @Override

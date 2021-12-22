@@ -10,7 +10,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -145,22 +144,5 @@ public class User {
 
   void setUsername(String username) {
     this.username = username;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    User user = (User) o;
-    return uniqueIdentifier == user.uniqueIdentifier;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(uniqueIdentifier);
   }
 }
