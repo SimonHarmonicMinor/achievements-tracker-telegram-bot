@@ -57,6 +57,13 @@ public class UserTestBuilder implements TestBuilder<User> {
 
   @Override
   public User build() {
-    return null;
+    final var user = new User();
+    user.setUniqueIdentifier(uniqueIdentifier);
+    user.setBot(isBot);
+    user.setDateRegistered(dateRegistered);
+    user.setFirstName(firstName);
+    user.setLastName(lastName);
+    user.setUsername(username);
+    return user;
   }
 }
