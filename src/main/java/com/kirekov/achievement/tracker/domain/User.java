@@ -56,11 +56,11 @@ public class User {
   @OneToMany(fetch = LAZY, mappedBy = "userWhoCreated", cascade = {PERSIST, MERGE})
   private List<@Valid Achievement> achievements = new ArrayList<>();
 
-  public static User newRealUser(long uniqueIdentifier, String firstName) {
-    return newRealUser(uniqueIdentifier, firstName, "", "");
+  protected User() {
   }
 
-  protected User() {
+  public static User newRealUser(long uniqueIdentifier, String firstName) {
+    return newRealUser(uniqueIdentifier, firstName, "", "");
   }
 
   public static User newRealUser(
