@@ -18,10 +18,13 @@ public class TestDbFacade {
   private TransactionTemplate transactionTemplate;
 
   public void cleanDatabase() {
-    JdbcTestUtils.deleteFromTables(
-        jdbcTemplate,
-        "achievement", "user"
-    );
+    transactionTemplate.execute(status -> {
+      JdbcTestUtils.deleteFromTables(
+          jdbcTemplate,
+          "achievement", "user"
+      );
+      return null;
+    });
   }
 
   public <T> TestBuilder<T> persistedOnce(TestBuilder<T> builder) {
