@@ -34,7 +34,7 @@ class UserTest extends AbstractIntegrationTest {
   @Test
   @DisplayName("Should persist bot user")
   void shouldPersistBotUser() {
-    final var bot = db.persist(() -> User.newBot(2L, "some_name"));
+    final var bot = db.save(() -> User.newBot(2L, "some_name"));
 
     final var foundBot = transactionTemplate.execute(status ->
         em.find(User.class, bot.getId())
@@ -46,7 +46,7 @@ class UserTest extends AbstractIntegrationTest {
   @Test
   @DisplayName("Should persist real user")
   void shouldPersistRealUser() {
-    final var realUser = db.persist(() -> User.newRealUser(7L, "some_name"));
+    final var realUser = db.save(() -> User.newRealUser(7L, "some_name"));
 
     final var foundRealUser = transactionTemplate.execute(status ->
         em.find(User.class, realUser.getId())
