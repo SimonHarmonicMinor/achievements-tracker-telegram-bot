@@ -14,8 +14,8 @@ public class MessageTestBuilder implements TestBuilder<Message> {
   }
 
   private MessageTestBuilder(MessageTestBuilder builder) {
-    builder.chat = chat;
-    builder.text = text;
+    this.chat = builder.chat;
+    this.text = builder.text;
   }
 
   public static MessageTestBuilder aMessage() {
