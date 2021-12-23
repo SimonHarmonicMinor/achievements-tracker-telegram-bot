@@ -5,7 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
 import com.kirekov.achievement.tracker.testutil.DBTest;
-import com.kirekov.achievement.tracker.testutil.IntegrationTest;
+import com.kirekov.achievement.tracker.testutil.IntegrationTestSuite;
 import com.kirekov.achievement.tracker.testutil.TestDbFacade;
 import java.util.Collection;
 import org.hamcrest.Description;
@@ -21,7 +21,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @DBTest
-class UserTest extends IntegrationTest {
+class UserTest extends IntegrationTestSuite {
 
   @Autowired
   private TestDbFacade db;

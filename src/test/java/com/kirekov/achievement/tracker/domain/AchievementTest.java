@@ -5,7 +5,7 @@ import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.kirekov.achievement.tracker.testutil.DBTest;
-import com.kirekov.achievement.tracker.testutil.IntegrationTest;
+import com.kirekov.achievement.tracker.testutil.IntegrationTestSuite;
 import com.kirekov.achievement.tracker.testutil.TestDbFacade;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -19,7 +19,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @DBTest
-class AchievementTest extends IntegrationTest {
+class AchievementTest extends IntegrationTestSuite {
 
   @Autowired
   private TestDbFacade db;
