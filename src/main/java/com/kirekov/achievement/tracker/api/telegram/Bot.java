@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -13,7 +13,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 /**
  * Telegram bot entry point.
  */
-@Component
 @Profile("prod")
 public class Bot extends TelegramLongPollingBot {
 
@@ -23,6 +22,10 @@ public class Bot extends TelegramLongPollingBot {
   private String token;
   @Value("${bot.username}")
   private String username;
+
+  public Bot(DefaultBotOptions options) {
+    super(options);
+  }
 
   @Override
   public String getBotUsername() {
