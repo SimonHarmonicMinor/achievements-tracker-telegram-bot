@@ -9,10 +9,13 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+/**
+ * Telegram bot entry point.
+ */
 @Component
 public class Bot extends TelegramLongPollingBot {
 
-  private static final Logger log = LoggerFactory.getLogger(Bot.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Bot.class);
 
   @Value("${bot.token}")
   private String token;
@@ -32,7 +35,7 @@ public class Bot extends TelegramLongPollingBot {
 
   @Override
   public void onRegister() {
-    log.info("Telegram bot '{}' has been registered", username);
+    LOG.info("Telegram bot '{}' has been registered", username);
   }
 
   @Override
@@ -44,7 +47,7 @@ public class Bot extends TelegramLongPollingBot {
     try {
       execute(new SendMessage(String.valueOf(message.getChatId()), "Stub message"));
     } catch (TelegramApiException e) {
-      log.error("Failed to send message to " + message.getChat(), e);
+      LOG.error("Failed to send message to " + message.getChat(), e);
     }
   }
 }
