@@ -22,7 +22,6 @@ public class Bot extends TelegramLongPollingBot {
   @Value("${bot.username}")
   private String username;
 
-
   @Override
   public String getBotUsername() {
     return username;
