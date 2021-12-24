@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 
+/**
+ * {@linkplain Bot} configuration.
+ */
 @Configuration
 @Profile("prod")
 public class BotConfiguration {
