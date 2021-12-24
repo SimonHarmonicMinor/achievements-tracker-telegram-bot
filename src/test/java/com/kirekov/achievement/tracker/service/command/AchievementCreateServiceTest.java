@@ -11,7 +11,7 @@ import com.kirekov.achievement.tracker.domain.Achievement;
 import com.kirekov.achievement.tracker.domain.User;
 import com.kirekov.achievement.tracker.exception.UserNotFoundException;
 import com.kirekov.achievement.tracker.testutil.DBTest;
-import com.kirekov.achievement.tracker.testutil.IntegrationTest;
+import com.kirekov.achievement.tracker.testutil.IntegrationTestSuite;
 import com.kirekov.achievement.tracker.testutil.TestDbFacade;
 import java.util.Collection;
 import org.hamcrest.Description;
@@ -29,7 +29,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @DBTest
 @ContextConfiguration(classes = AchievementCreateServiceConfiguration.class)
 @DisplayName("AchievementCreateService: test cases")
-class AchievementCreateServiceTest extends IntegrationTest {
+class AchievementCreateServiceTest extends IntegrationTestSuite {
 
   @Autowired
   private TestDbFacade db;

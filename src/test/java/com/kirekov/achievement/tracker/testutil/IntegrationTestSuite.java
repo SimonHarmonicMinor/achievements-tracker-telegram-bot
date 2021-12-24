@@ -11,9 +11,9 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.lifecycle.Startables;
 
 @ContextConfiguration(
-    initializers = IntegrationTest.Initializer.class
+    initializers = IntegrationTestSuite.Initializer.class
 )
-public class IntegrationTest {
+public class IntegrationTestSuite {
 
   private static final String IMAGE_VERSION = "mysql:8.0";
 
